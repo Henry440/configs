@@ -1,0 +1,125 @@
+# ~/.config/starship.toml
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Change the default prompt format
+format = """
+[╭─](bold green)$battery $os $localip $cmd_duration\
+$python(fg:#e44729)\
+$docker_context(fg:#e44729)\
+$time\
+$git_branch$git_status(fg:#e44729)
+[╰─>](bold green)[](fg:#0969da )\
+$username$hostname[](fg:#0969da bg:#eac54f)\
+$directory[](fg:#eac54f)\
+"""
+
+[cmd_duration]
+format = 'Dauer: [$duration]($style) '
+style = "white"
+min_time = 1000
+
+[localip]
+ssh_only = false
+format = '[$localipv4](white) '
+disabled = false
+
+[docker_context]
+detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
+format = '[🐋 $context](blue bold)'
+
+[python]
+symbol = ''
+style = "blue"
+python_binary = ['python', 'python3', 'python2']
+version_format = 'v${raw}'
+detect_extensions = ['py']
+detect_files = ['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'main.py']
+format = "[${symbol} (${version})]($style)"
+
+
+[env_var.STARSHIP_DISTRO]
+format = '[$env_value](bold white)'  # removed space between distro and rest for pwsh
+variable = "STARSHIP_DISTRO"
+disabled = false
+
+# Shows the username
+[username]
+show_always = true
+style_user = "fg:#ffffff bg:#0969da"
+style_root = "fg:#ffffff bg:#0969da"
+format = '[$user]($style)'
+disabled = false
+
+[hostname]
+ssh_only = false
+ssh_symbol = ""
+style = "fg:#ffffff bg:#0969da"
+format = "[@$hostname]($style)"
+
+[directory]
+style = "fg:#000000 bg:#eac54f"
+home_symbol = "  "
+read_only = '🔒'
+format = "[$read_only]($style)[$path]($style)"
+disabled = false
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "fg:#ffffff bg:#e44729"
+format = '[$symbol$branch]($style)'
+disabled = false
+
+[git_status]
+style = "fg:#ffffff bg:#e44729"
+format = '[$all_status$ahead_behind]($style)'
+disabled = false
+
+# Start languages and tools #
+
+[java]
+symbol = ""
+style = "fg:#ffffff bg:#007396"
+format = '[ $symbol ($version) ]($style)'
+disabled = false
+
+[nodejs]
+symbol = ""
+style = "fg:#ffffff bg:#5fa04e"
+format = '[ $symbol ($version) ]($style)'
+disabled = false
+
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "fg:#ffffff"
+format = '[  $time ]($style)'
+
+[os]
+style = "fg:#ffffff"
+disabled = false
+format = " [$symbol]($style)"
+
+[os.symbols]
+Linux = "🐧 "
+Ubuntu = "🐧 "
+Macos = "🍎 "
+Unknown = "❓ "
+Windows = " "
+
+[battery]
+full_symbol = '🔋 '
+charging_symbol = '⚡️ '
+discharging_symbol = '💀 '
+format = '[$symbol$percentage](fg:white) '
+
+[[battery.display]]
+threshold = 10
+style = 'bold red'
