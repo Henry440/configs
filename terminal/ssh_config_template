@@ -1,0 +1,8 @@
+Host *
+     Protocol 2
+     
+Host <ALIAS1> <ALIAS2>
+	HostName <DNS/FQDN/IPv4>
+	User <User>
+	Port <Port>
+	IdentityFile ~/.ssh/<CERT_FILE>
