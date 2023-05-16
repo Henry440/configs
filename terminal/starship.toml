@@ -100,7 +100,7 @@ disabled = false
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "fg:#ffffff"
-format = '[  $time ]($style)'
+format = '[  $time ]($style)'
 
 [os]
 style = "fg:#ffffff"
